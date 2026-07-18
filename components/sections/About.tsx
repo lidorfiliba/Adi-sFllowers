@@ -34,13 +34,6 @@ export default function About({ content }: { content: ContentMap }) {
                 className="w-full h-auto object-cover"
               />
             </div>
-            <div
-              className="absolute bottom-6 left-6 rounded-2xl px-5 py-4 text-center"
-              style={{ background: "#B5184F", zIndex: 2, boxShadow: "0 4px 20px rgba(181,24,79,0.3)" }}
-            >
-              <p className="text-3xl font-black text-white">15+</p>
-              <p className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.8)" }}>שנות ניסיון</p>
-            </div>
           </motion.div>
 
           <motion.div
@@ -60,22 +53,6 @@ export default function About({ content }: { content: ContentMap }) {
               {content.about_text}
             </p>
 
-            <div className="grid grid-cols-3 gap-4">
-              {[
-                { num: "5,000+", label: "זרים נשלחו" },
-                { num: "98%",    label: "לקוחות מרוצים" },
-                { num: "3 שעות", label: "זמן משלוח" },
-              ].map(({ num, label }) => (
-                <div
-                  key={label}
-                  className="text-center py-4 px-2 rounded-2xl"
-                  style={{ background: "#FFF7F9", border: "1px solid #F0DDE7" }}
-                >
-                  <p className="text-xl font-black" style={{ color: "#B5184F" }}>{num}</p>
-                  <p className="text-xs mt-1" style={{ color: "#9C8090" }}>{label}</p>
-                </div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </div>

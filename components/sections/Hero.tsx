@@ -108,25 +108,6 @@ export default function Hero({ content }: { content: ContentMap }) {
             </motion.a>
           </div>
 
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-8 mt-10 pt-8"
-            style={{ borderTop: "1px solid #F0DDE7" }}
-          >
-            {[
-              { num: "15+", label: "שנות ניסיון" },
-              { num: "5,000+", label: "זרים נשלחו" },
-              { num: "98%", label: "לקוחות מרוצים" },
-            ].map(({ num, label }) => (
-              <div key={label} className="text-center">
-                <p className="text-xl font-black" style={{ color: "#B5184F" }}>{num}</p>
-                <p className="text-xs" style={{ color: "#9C8090" }}>{label}</p>
-              </div>
-            ))}
-          </motion.div>
         </motion.div>
       </div>
     </section>
