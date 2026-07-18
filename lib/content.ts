@@ -18,6 +18,7 @@ export const DEFAULT_CONTENT: ContentMap = {
   testimonials_title: "מה הלקוחות אומרים",
   about_title: "קצת עלינו",
   about_text: "פרחי הרצליה הוא בית לפרחים טריים ויצירתיות בלתי מוגבלת. אנחנו שוזרים חלומות לזרים מרהיבים כבר מעל 15 שנה — עם אהבה, מקצועיות וטביעת אצבע אישית בכל זר.",
+  about_image: "",
   contact_title: "צרו קשר",
   contact_phone: "054-000-0000",
   contact_whatsapp: "972540000000",

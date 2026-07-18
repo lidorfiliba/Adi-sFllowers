@@ -30,7 +30,7 @@ export default function Gallery({
     <section
       id="gallery"
       className="py-24 px-6"
-      style={{ background: "linear-gradient(180deg, #F5EDE0 0%, #FFF8F0 100%)" }}
+      style={{ background: "#FFF7F9" }}
     >
       <div className="max-w-6xl mx-auto">
         <motion.div
@@ -42,14 +42,14 @@ export default function Gallery({
         >
           <span
             className="text-sm font-semibold tracking-widest uppercase mb-4 block"
-            style={{ color: "#D4AF37" }}
+            style={{ color: "#B5184F" }}
           >
             עבודות שלנו
           </span>
-          <h2 className="text-4xl md:text-5xl font-black" style={{ color: "#1B4332" }}>
+          <h2 className="text-4xl md:text-5xl font-black" style={{ color: "#1A0A10" }}>
             {content.gallery_title}
           </h2>
-          <div className="w-20 h-1 mx-auto mt-4 rounded-full" style={{ background: "#D4AF37" }} />
+          <div className="w-20 h-1 mx-auto mt-4 rounded-full" style={{ background: "#B5184F" }} />
         </motion.div>
 
         {items.length === 0 ? (
@@ -82,9 +82,9 @@ export default function Gallery({
                   {item.caption && (
                     <div
                       className="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{ background: "linear-gradient(to top, rgba(27,67,50,0.85) 0%, transparent 60%)" }}
+                      style={{ background: "linear-gradient(to top, rgba(26,10,16,0.78) 0%, transparent 60%)" }}
                     >
-                      <p className="p-4 text-sm font-medium" style={{ color: "#FFF8F0" }}>
+                      <p className="p-4 text-sm font-medium" style={{ color: "white" }}>
                         {item.caption}
                       </p>
                     </div>

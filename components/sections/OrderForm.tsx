@@ -275,7 +275,7 @@ export default function OrderForm({
         </motion.div>
 
         {/* Step indicator */}
-        <div className="flex items-center justify-center gap-4 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
           {["בחרו פרחים", "פרטי הזמנה"].map((label, i) => {
             const active = (i === 0 && step === "select") || (i === 1 && step === "details");
             const done = i === 0 && step === "details";
@@ -368,9 +368,9 @@ export default function OrderForm({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 16 }}
                     className="rounded-2xl p-5 mb-8"
-                    style={{ background: "white", boxShadow: "0 4px 20px rgba(27,67,50,0.08)" }}
+                    style={{ background: "white", boxShadow: "0 4px 20px rgba(181,24,79,0.07)" }}
                   >
-                    <p className="font-bold mb-4" style={{ color: "#1B4332" }}>
+                    <p className="font-bold mb-4" style={{ color: "#1A0A10" }}>
                       איך תרצו לקבל את הפרחים?
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -453,9 +453,9 @@ export default function OrderForm({
               {/* Order summary */}
               <div
                 className="rounded-2xl p-5 mb-8"
-                style={{ background: "rgba(27,67,50,0.05)", border: "1.5px solid rgba(27,67,50,0.12)" }}
+                style={{ background: "rgba(181,24,79,0.04)", border: "1.5px solid rgba(181,24,79,0.15)" }}
               >
-                <p className="font-bold mb-3 text-sm" style={{ color: "#1B4332" }}>סיכום ההזמנה</p>
+                <p className="font-bold mb-3 text-sm" style={{ color: "#1A0A10" }}>סיכום ההזמנה</p>
                 <div className="space-y-2 mb-3">
                   {selectedItems.map((b) => (
                     <div key={b.id} className="flex items-center gap-3">
@@ -466,20 +466,20 @@ export default function OrderForm({
                         height={36}
                         className="rounded-lg object-cover flex-shrink-0"
                       />
-                      <span className="flex-1 text-sm font-medium" style={{ color: "#1B4332" }}>
+                      <span className="flex-1 text-sm font-medium" style={{ color: "#1A0A10" }}>
                         {b.name} × {quantities[b.id]}
                       </span>
-                      <span className="text-sm font-bold" style={{ color: "#D4AF37" }}>
+                      <span className="text-sm font-bold" style={{ color: "#B5184F" }}>
                         ₪{(b.price * (quantities[b.id] || 0)).toLocaleString("he-IL")}
                       </span>
                     </div>
                   ))}
                 </div>
-                <div className="flex items-center justify-between pt-3" style={{ borderTop: "1px solid rgba(27,67,50,0.1)" }}>
-                  <span className="text-sm font-semibold" style={{ color: "#6B7280" }}>
+                <div className="flex items-center justify-between pt-3" style={{ borderTop: "1px solid rgba(181,24,79,0.1)" }}>
+                  <span className="text-sm font-semibold" style={{ color: "#6B556A" }}>
                     {arrangementType === "mix" ? "🌺 מיקס משולב" : "🌹 זרים נפרדים"} · {totalCount} פרחים
                   </span>
-                  <span className="font-black text-lg" style={{ color: "#1B4332" }}>
+                  <span className="font-black text-lg" style={{ color: "#B5184F" }}>
                     ₪{totalAmount.toLocaleString("he-IL")}
                   </span>
                 </div>
@@ -499,23 +499,23 @@ export default function OrderForm({
                 </Field>
 
                 <div>
-                  <label className="block text-sm font-semibold mb-3" style={{ color: "#1B4332" }}>אופן קבלת הפרחים *</label>
-                  <div className="flex gap-4">
+                  <label className="block text-sm font-semibold mb-3" style={{ color: "#1A0A10" }}>אופן קבלת הפרחים *</label>
+                  <div className="flex flex-col sm:flex-row gap-3">
                     {[{ value: "delivery", label: "משלוח לכתובת" }, { value: "pickup", label: "איסוף עצמי" }].map(({ value, label }) => (
                       <label
                         key={value}
                         className="flex items-center gap-3 flex-1 p-4 rounded-2xl cursor-pointer transition-all"
                         style={{
-                          background: deliveryType === value ? "rgba(27,67,50,0.08)" : "white",
-                          border: `2px solid ${deliveryType === value ? "#1B4332" : "#E5E7EB"}`,
+                          background: deliveryType === value ? "rgba(181,24,79,0.07)" : "white",
+                          border: `2px solid ${deliveryType === value ? "#B5184F" : "#E5E7EB"}`,
                         }}
                       >
                         <input {...register("deliveryType")} type="radio" value={value} className="sr-only" />
                         <div className="w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0"
-                          style={{ borderColor: deliveryType === value ? "#1B4332" : "#D1D5DB" }}>
-                          {deliveryType === value && <div className="w-2 h-2 rounded-full" style={{ background: "#1B4332" }} />}
+                          style={{ borderColor: deliveryType === value ? "#B5184F" : "#D1D5DB" }}>
+                          {deliveryType === value && <div className="w-2 h-2 rounded-full" style={{ background: "#B5184F" }} />}
                         </div>
-                        <span className="font-medium text-sm" style={{ color: "#1B4332" }}>{label}</span>
+                        <span className="font-medium text-sm" style={{ color: "#1A0A10" }}>{label}</span>
                       </label>
                     ))}
                   </div>
@@ -546,11 +546,11 @@ export default function OrderForm({
                   />
                 </Field>
 
-                <div className="flex gap-4 pt-4">
+                <div className="flex flex-col sm:flex-row gap-3 pt-4">
                   <button
                     type="button"
                     onClick={() => setStep("select")}
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl font-semibold border-2 transition-all"
+                    className="sm:flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl font-semibold border-2 transition-all"
                     style={{ borderColor: "#B5184F", color: "#B5184F", background: "white" }}
                   >
                     <ChevronRight size={18} />
@@ -559,8 +559,8 @@ export default function OrderForm({
                   <button
                     type="submit"
                     disabled={loading}
-                    className="px-8 py-4 rounded-2xl text-lg font-black transition-all disabled:opacity-60 disabled:shadow-none"
-                    style={{ background: "#B5184F", color: "white", flex: 2 }}
+                    className="sm:flex-[2] px-8 py-4 rounded-2xl text-base font-black transition-all disabled:opacity-60 disabled:shadow-none"
+                    style={{ background: "#B5184F", color: "white" }}
                   >
                     {loading ? "שולח..." : `המשך לתשלום — ₪${totalAmount.toLocaleString("he-IL")}`}
                   </button>

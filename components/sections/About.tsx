@@ -5,6 +5,8 @@ import Image from "next/image";
 import type { ContentMap } from "@/lib/content";
 
 export default function About({ content }: { content: ContentMap }) {
+  const imgSrc = content.about_image || "https://picsum.photos/seed/aboutshop/700/500";
+
   return (
     <section id="about" className="py-24 px-6" style={{ background: "#ffffff" }}>
       <div className="max-w-6xl mx-auto">
@@ -17,7 +19,7 @@ export default function About({ content }: { content: ContentMap }) {
             className="relative"
           >
             <div
-              className="absolute -top-4 -right-4 w-full h-full rounded-3xl"
+              className="absolute -top-4 -right-4 w-full h-full rounded-3xl hidden sm:block"
               style={{ background: "#FFF0F5", zIndex: 0 }}
             />
             <div
@@ -25,7 +27,7 @@ export default function About({ content }: { content: ContentMap }) {
               style={{ zIndex: 1, boxShadow: "0 8px 40px rgba(181,24,79,0.12)" }}
             >
               <Image
-                src="https://picsum.photos/seed/aboutshop/700/500"
+                src={imgSrc}
                 alt="פרחי הרצליה — חנות הפרחים שלנו"
                 width={700}
                 height={500}
