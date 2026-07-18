@@ -5,12 +5,10 @@ import { MessageCircle, ShoppingBag } from "lucide-react";
 import type { ContentMap } from "@/lib/content";
 
 const PETALS = [
-  { emoji: "🌸", size: 26, x: "7%",  y: "18%", cls: "petal" },
-  { emoji: "🌺", size: 20, x: "90%", y: "14%", cls: "petal-2" },
-  { emoji: "🌹", size: 24, x: "78%", y: "70%", cls: "petal-3" },
-  { emoji: "💐", size: 28, x: "4%",  y: "72%", cls: "petal-2" },
-  { emoji: "🌷", size: 18, x: "50%", y: "7%",  cls: "petal-4" },
-  { emoji: "🌸", size: 16, x: "20%", y: "82%", cls: "petal-3" },
+  { emoji: "🌸", size: 22, x: "5%",  y: "20%", cls: "petal" },
+  { emoji: "🌺", size: 18, x: "91%", y: "16%", cls: "petal-2" },
+  { emoji: "🌷", size: 20, x: "80%", y: "68%", cls: "petal-3" },
+  { emoji: "🌸", size: 16, x: "3%",  y: "70%", cls: "petal-4" },
 ];
 
 export default function Hero({ content }: { content: ContentMap }) {
@@ -19,79 +17,75 @@ export default function Hero({ content }: { content: ContentMap }) {
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] flex items-center justify-center overflow-hidden"
-      style={{ background: "linear-gradient(150deg, #7A1035 0%, #B5184F 50%, #D4366E 100%)" }}
+      className="relative flex items-center justify-center overflow-hidden"
+      style={{
+        minHeight: "72vh",
+        background: "linear-gradient(150deg, #FFF8F2 0%, #FFF3F7 60%, #FFF8F2 100%)",
+      }}
     >
-      {/* Subtle overlay texture */}
-      <div
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage: `radial-gradient(ellipse at 25% 60%, rgba(244,185,66,0.35) 0%, transparent 55%),
-            radial-gradient(ellipse at 80% 25%, rgba(255,255,255,0.08) 0%, transparent 50%)`,
-        }}
-      />
+      {/* Very subtle warm blush border at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "#F0DDE7" }} />
 
-      {/* Floating petals */}
+      {/* Floating petals — subtle */}
       {PETALS.map((p, i) => (
         <span
           key={i}
           className={`absolute select-none pointer-events-none ${p.cls}`}
-          style={{ left: p.x, top: p.y, fontSize: p.size, opacity: 0.55 }}
+          style={{ left: p.x, top: p.y, fontSize: p.size, opacity: 0.35 }}
           aria-hidden
         >
           {p.emoji}
         </span>
       ))}
 
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto w-full">
+      <div className="relative z-10 text-center px-6 max-w-3xl mx-auto w-full py-16">
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
         >
           {/* Badge */}
           <motion.span
-            initial={{ opacity: 0, scale: 0.85 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.25, duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold mb-8"
+            transition={{ delay: 0.2, duration: 0.4 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-6"
             style={{
-              background: "rgba(255,255,255,0.15)",
-              color: "rgba(255,255,255,0.95)",
-              border: "1px solid rgba(255,255,255,0.3)",
-              backdropFilter: "blur(8px)",
+              background: "#FFF0F5",
+              color: "#B5184F",
+              border: "1px solid #F0DDE7",
             }}
           >
             🌸 פרחים טריים · משלוח מהיר · הרצליה והסביבה
           </motion.span>
 
           <h1
-            className="text-5xl sm:text-6xl md:text-7xl font-black leading-tight mb-6"
-            style={{ color: "white", textShadow: "0 2px 20px rgba(0,0,0,0.2)" }}
+            className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-4"
+            style={{ color: "#1A0A10" }}
           >
             {content.hero_headline}
           </h1>
 
           <p
-            className="text-lg sm:text-xl font-light mb-10 max-w-2xl mx-auto leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.88)" }}
+            className="text-base sm:text-lg font-light mb-8 max-w-xl mx-auto leading-relaxed"
+            style={{ color: "#6B556A" }}
           >
             {content.hero_subheadline}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
             <motion.a
               href="#order"
-              whileHover={{ scale: 1.04, y: -2 }}
+              whileHover={{ scale: 1.03, y: -1 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-lg font-bold w-full sm:w-auto justify-center"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-base font-bold w-full sm:w-auto justify-center"
               style={{
-                background: "white",
-                color: "#B5184F",
-                boxShadow: "0 4px 24px rgba(0,0,0,0.18)",
+                background: "#B5184F",
+                color: "white",
+                boxShadow: "0 4px 16px rgba(181,24,79,0.25)",
               }}
             >
-              <ShoppingBag size={21} />
+              <ShoppingBag size={19} />
               {content.hero_cta_order}
             </motion.a>
 
@@ -99,28 +93,28 @@ export default function Hero({ content }: { content: ContentMap }) {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.04, y: -2 }}
+              whileHover={{ scale: 1.03, y: -1 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-lg font-bold w-full sm:w-auto justify-center"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-base font-bold w-full sm:w-auto justify-center"
               style={{
-                background: "rgba(255,255,255,0.12)",
-                color: "white",
-                border: "2px solid rgba(255,255,255,0.4)",
-                backdropFilter: "blur(6px)",
+                background: "white",
+                color: "#B5184F",
+                border: "1.5px solid #F0DDE7",
+                boxShadow: "0 2px 8px rgba(181,24,79,0.08)",
               }}
             >
-              <MessageCircle size={21} />
+              <MessageCircle size={19} />
               {content.hero_cta_whatsapp}
             </motion.a>
           </div>
 
           {/* Stats */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-8 mt-14 pt-10"
-            style={{ borderTop: "1px solid rgba(255,255,255,0.18)" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="flex flex-wrap justify-center gap-8 mt-10 pt-8"
+            style={{ borderTop: "1px solid #F0DDE7" }}
           >
             {[
               { num: "15+", label: "שנות ניסיון" },
@@ -128,27 +122,13 @@ export default function Hero({ content }: { content: ContentMap }) {
               { num: "98%", label: "לקוחות מרוצים" },
             ].map(({ num, label }) => (
               <div key={label} className="text-center">
-                <p className="text-2xl font-black" style={{ color: "#F4B942" }}>{num}</p>
-                <p className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>{label}</p>
+                <p className="text-xl font-black" style={{ color: "#B5184F" }}>{num}</p>
+                <p className="text-xs" style={{ color: "#9C8090" }}>{label}</p>
               </div>
             ))}
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ repeat: Infinity, duration: 1.6 }}
-      >
-        <div
-          className="w-6 h-10 rounded-full flex items-start justify-center pt-2"
-          style={{ border: "2px solid rgba(255,255,255,0.35)" }}
-        >
-          <div className="w-1.5 h-2.5 rounded-full" style={{ background: "rgba(255,255,255,0.65)" }} />
-        </div>
-      </motion.div>
     </section>
   );
 }
