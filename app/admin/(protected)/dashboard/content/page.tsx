@@ -25,10 +25,16 @@ const sections: { title: string; entries: ContentEntry[] }[] = [
     ],
   },
   {
+    title: "כפתור WhatsApp",
+    entries: [
+      { key: "whatsapp_number", label: "מספר WhatsApp לכפתור הצף (ללא + — לדוגמה: 972541234567)" },
+    ],
+  },
+  {
     title: "צרו קשר",
     entries: [
       { key: "contact_phone", label: "טלפון" },
-      { key: "contact_whatsapp", label: "מספר וואטסאפ (ללא +)" },
+      { key: "contact_whatsapp", label: "מספר וואטסאפ בסקשן יצירת קשר (ללא +)" },
       { key: "contact_address", label: "כתובת" },
       { key: "contact_hours", label: "שעות פעילות", multiline: true },
       { key: "contact_map_embed", label: "קוד הטמעה של מפה (אופציונלי)", multiline: true },
