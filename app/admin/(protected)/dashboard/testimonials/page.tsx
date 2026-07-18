@@ -56,13 +56,13 @@ export default function TestimonialsPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-black" style={{ color: "#1B4332" }}>המלצות לקוחות</h1>
+          <h1 className="text-3xl font-black" style={{ color: "#B5184F" }}>המלצות לקוחות</h1>
           <p style={{ color: "#6B7280" }}>נהלו את ההמלצות שמוצגות באתר</p>
         </div>
         <button
           onClick={() => { setAdding(true); setEditing(null); setForm(EMPTY); }}
           className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold"
-          style={{ background: "#1B4332", color: "#FFF8F0" }}
+          style={{ background: "#B5184F", color: "white" }}
         >
           <Plus size={18} />
           הוסף המלצה
@@ -72,9 +72,9 @@ export default function TestimonialsPage() {
       {isFormOpen && (
         <div
           className="rounded-2xl p-6 mb-8"
-          style={{ background: "white", boxShadow: "0 4px 16px rgba(0,0,0,0.08)", border: "2px solid #1B4332" }}
+          style={{ background: "white", boxShadow: "0 4px 16px rgba(181,24,79,0.1)", border: "2px solid #F0DDE7" }}
         >
-          <h2 className="font-bold mb-5" style={{ color: "#1B4332" }}>
+          <h2 className="font-bold mb-5" style={{ color: "#B5184F" }}>
             {editing ? "עריכת המלצה" : "המלצה חדשה"}
           </h2>
           <div className="space-y-4">
@@ -121,7 +121,7 @@ export default function TestimonialsPage() {
             <button
               onClick={handleSave}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold"
-              style={{ background: "#1B4332", color: "#FFF8F0" }}
+              style={{ background: "#B5184F", color: "white" }}
             >
               <Check size={18} />
               שמור
@@ -150,7 +150,7 @@ export default function TestimonialsPage() {
           >
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
-                <span className="font-bold" style={{ color: "#1B4332" }}>{item.author}</span>
+                <span className="font-bold" style={{ color: "#B5184F" }}>{item.author}</span>
                 <div className="flex gap-0.5">
                   {Array.from({ length: item.rating }).map((_, i) => (
                     <Star key={i} size={14} fill="#D4AF37" style={{ color: "#D4AF37" }} />

@@ -25,7 +25,7 @@ export default function AdminSidebar() {
   return (
     <aside
       className="w-64 flex-shrink-0 min-h-screen flex flex-col"
-      style={{ background: "#1B4332", color: "#FFF8F0" }}
+      style={{ background: "#1A0A10", color: "#FFF8F0" }}
     >
       <div className="p-6 border-b" style={{ borderColor: "rgba(255,248,240,0.1)" }}>
         <h2 className="text-lg font-black">🌸 פרחי הרצליה</h2>
@@ -42,7 +42,7 @@ export default function AdminSidebar() {
               className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all"
               style={{
                 background: active ? "rgba(255,248,240,0.12)" : "transparent",
-                color: active ? "#D4AF37" : "rgba(255,248,240,0.75)",
+                color: active ? "#F4B942" : "rgba(255,248,240,0.75)",
               }}
             >
               <Icon size={18} />
