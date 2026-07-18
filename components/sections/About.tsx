@@ -24,14 +24,14 @@ export default function About({ content }: { content: ContentMap }) {
             />
             <div
               className="relative rounded-3xl overflow-hidden"
-              style={{ zIndex: 1, boxShadow: "0 8px 40px rgba(181,24,79,0.12)" }}
+              style={{ zIndex: 1, boxShadow: "0 8px 40px rgba(181,24,79,0.12)", aspectRatio: "4/3" }}
             >
               <Image
                 src={imgSrc}
                 alt="פרחי הרצליה — חנות הפרחים שלנו"
-                width={700}
-                height={500}
-                className="w-full h-auto object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
           </motion.div>

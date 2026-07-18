@@ -52,7 +52,7 @@ const sections: { title: string; entries: ContentEntry[] }[] = [
   },
 ];
 
-function ImageField({ value, onChange }: { value: string; onChange: (url: string) => void }) {
+function ImageField({ value, onChange, onSave }: { value: string; onChange: (url: string) => void; onSave?: (url: string) => Promise<void> }) {
   const [uploading, setUploading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -63,8 +63,13 @@ function ImageField({ value, onChange }: { value: string; onChange: (url: string
       form.append("file", file);
       const res = await fetch("/api/upload", { method: "POST", body: form });
       const data = await res.json();
-      if (data.url) { onChange(data.url); toast.success("התמונה הועלתה"); }
-      else toast.error("שגיאה בהעלאה");
+      if (data.url) {
+        onChange(data.url);
+        if (onSave) await onSave(data.url);
+        else toast.success("התמונה הועלתה");
+      } else {
+        toast.error("שגיאה בהעלאה");
+      }
     } finally {
       setUploading(false);
     }
@@ -150,7 +155,20 @@ export default function ContentPage() {
                 <div key={key}>
                   <label className="block text-sm font-semibold mb-2" style={{ color: "#1A0A10" }}>{label}</label>
                   {image ? (
-                    <ImageField value={values[key] || ""} onChange={(url) => setValues((v) => ({ ...v, [key]: url }))} />
+                    <ImageField
+                      value={values[key] || ""}
+                      onChange={(url) => setValues((v) => ({ ...v, [key]: url }))}
+                      onSave={async (url) => {
+                        const updated = { ...values, [key]: url };
+                        const res = await fetch("/api/content", {
+                          method: "PUT",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify(updated),
+                        });
+                        if (res.ok) toast.success("התמונה הועלתה ונשמרה");
+                        else toast.error("שגיאה בשמירה");
+                      }}
+                    />
                   ) : multiline ? (
                     <textarea
                       value={values[key] || ""}
