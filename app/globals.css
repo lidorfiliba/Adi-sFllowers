@@ -1,25 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #BE185D;
-  --color-primary-light: #EC4899;
-  --color-primary-subtle: #FDF2F8;
-  --color-green: #15803D;
-  --color-green-light: #22C55E;
-  --color-gold: #D97706;
-  --color-gold-light: #FBBF24;
-  --color-purple: #7E22CE;
-  --color-coral: #F97316;
-  --color-cream: #FFF1F8;
-  --color-cream-dark: #FCE7F3;
-  --color-text: #1F0A14;
-  --color-text-muted: #9D4E6E;
+  --color-brand: #B5184F;
+  --color-brand-light: #D4366E;
+  --color-brand-pale: #FFF0F5;
+  --color-gold: #C8892A;
+  --color-gold-light: #F4B942;
+  --color-green: #2D7A4F;
+  --color-surface: #FFF7F9;
+  --color-border: #F0DDE7;
+  --color-text: #1A0A10;
+  --color-text-soft: #6B556A;
+  --color-text-muted: #9C8090;
   --font-heebo: var(--font-heebo), 'Arial Hebrew', sans-serif;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
 html {
   direction: rtl;
@@ -27,8 +23,8 @@ html {
 }
 
 body {
-  background-color: var(--color-cream);
-  color: var(--color-text);
+  background-color: #ffffff;
+  color: #1A0A10;
   font-family: var(--font-heebo), 'Arial Hebrew', sans-serif;
   font-size: 16px;
   line-height: 1.6;
@@ -36,56 +32,25 @@ body {
 }
 
 *:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid #B5184F;
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--color-cream-dark); }
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #BE185D, #7E22CE);
-  border-radius: 4px;
-}
+::-webkit-scrollbar-track { background: #FFF0F5; }
+::-webkit-scrollbar-thumb { background: #B5184F; border-radius: 4px; }
 
 .rtl-flip { transform: scaleX(-1); }
-
-.prose-he {
-  font-size: 1.05rem;
-  line-height: 1.8;
-}
-
+.prose-he { font-size: 1.05rem; line-height: 1.8; }
 section { overflow: hidden; }
 
-/* Glow utilities */
-.btn-glow-pink {
-  box-shadow: 0 0 24px rgba(190, 24, 93, 0.45), 0 4px 20px rgba(190, 24, 93, 0.3);
+/* Subtle petal float */
+@keyframes floatPetal {
+  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.55; }
+  50% { transform: translateY(-16px) rotate(180deg); opacity: 0.8; }
 }
-.btn-glow-gold {
-  box-shadow: 0 0 24px rgba(217, 119, 6, 0.45), 0 4px 20px rgba(217, 119, 6, 0.3);
-}
-.btn-glow-green {
-  box-shadow: 0 0 24px rgba(21, 128, 61, 0.4), 0 4px 20px rgba(21, 128, 61, 0.25);
-}
-
-/* Floating animation for hero */
-@keyframes floatUp {
-  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); opacity: 0.6; }
-  33% { transform: translateY(-18px) rotate(120deg) scale(1.1); opacity: 0.9; }
-  66% { transform: translateY(-8px) rotate(240deg) scale(0.95); opacity: 0.7; }
-}
-@keyframes floatSide {
-  0%, 100% { transform: translateX(0px) translateY(0px); }
-  50% { transform: translateX(12px) translateY(-14px); }
-}
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(190, 24, 93, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(190, 24, 93, 0.6), 0 0 60px rgba(126, 34, 206, 0.3); }
-}
-
-.float-1 { animation: floatUp 6s ease-in-out infinite; }
-.float-2 { animation: floatUp 8s ease-in-out infinite 1s; }
-.float-3 { animation: floatUp 7s ease-in-out infinite 2s; }
-.float-4 { animation: floatSide 5s ease-in-out infinite 0.5s; }
-.float-5 { animation: floatSide 9s ease-in-out infinite 1.5s; }
-.pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.petal { animation: floatPetal 6s ease-in-out infinite; }
+.petal-2 { animation: floatPetal 8s ease-in-out infinite 1.2s; }
+.petal-3 { animation: floatPetal 7s ease-in-out infinite 2.4s; }
+.petal-4 { animation: floatPetal 9s ease-in-out infinite 0.6s; }
