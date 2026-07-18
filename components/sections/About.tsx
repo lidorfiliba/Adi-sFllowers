@@ -4,9 +4,19 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import type { ContentMap } from "@/lib/content";
 
+const stats = [
+  { num: "5,000+", label: "זרים נשלחו", gradient: "linear-gradient(135deg, #BE185D, #EC4899)" },
+  { num: "98%", label: "לקוחות מרוצים", gradient: "linear-gradient(135deg, #15803D, #22C55E)" },
+  { num: "3 שעות", label: "זמן משלוח", gradient: "linear-gradient(135deg, #D97706, #FBBF24)" },
+];
+
 export default function About({ content }: { content: ContentMap }) {
   return (
-    <section id="about" className="py-24 px-6" style={{ background: "#FFF8F0" }}>
+    <section
+      id="about"
+      className="py-24 px-6"
+      style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #FFF1F8 100%)" }}
+    >
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -16,11 +26,12 @@ export default function About({ content }: { content: ContentMap }) {
             transition={{ duration: 0.6 }}
             className="relative"
           >
+            {/* Decorative background blob */}
             <div
-              className="absolute -top-4 -right-4 w-full h-full rounded-3xl"
-              style={{ background: "rgba(212,175,55,0.15)", zIndex: 0 }}
+              className="absolute -top-5 -right-5 w-full h-full rounded-3xl"
+              style={{ background: "linear-gradient(135deg, rgba(190,24,93,0.12), rgba(126,34,206,0.1))", zIndex: 0 }}
             />
-            <div className="relative rounded-3xl overflow-hidden" style={{ zIndex: 1 }}>
+            <div className="relative rounded-3xl overflow-hidden" style={{ zIndex: 1, boxShadow: "0 20px 60px rgba(190,24,93,0.15)" }}>
               <Image
                 src="https://picsum.photos/seed/aboutshop/700/500"
                 alt="פרחי הרצליה — חנות הפרחים שלנו"
@@ -29,14 +40,22 @@ export default function About({ content }: { content: ContentMap }) {
                 className="w-full h-auto object-cover"
               />
             </div>
-            {/* Stats badges */}
-            <div
-              className="absolute bottom-6 left-6 rounded-2xl p-4 text-center"
-              style={{ background: "white", boxShadow: "0 8px 30px rgba(27,67,50,0.15)", zIndex: 2 }}
+            {/* Years badge */}
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
+              className="absolute bottom-6 left-6 rounded-2xl p-4 text-center pulse-glow"
+              style={{
+                background: "linear-gradient(135deg, #BE185D, #7E22CE)",
+                zIndex: 2,
+                minWidth: 90,
+              }}
             >
-              <p className="text-3xl font-black" style={{ color: "#1B4332" }}>15+</p>
-              <p className="text-xs font-semibold" style={{ color: "#6B7280" }}>שנות ניסיון</p>
-            </div>
+              <p className="text-3xl font-black text-white">15+</p>
+              <p className="text-xs font-semibold text-white/80">שנות ניסיון</p>
+            </motion.div>
           </motion.div>
 
           <motion.div
@@ -46,28 +65,36 @@ export default function About({ content }: { content: ContentMap }) {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <span
-              className="text-sm font-semibold tracking-widest uppercase mb-4 block"
-              style={{ color: "#D4AF37" }}
+              className="text-sm font-bold tracking-widest uppercase mb-4 block"
+              style={{ color: "#BE185D" }}
             >
-              הסיפור שלנו
+              🌺 הסיפור שלנו
             </span>
-            <h2 className="text-4xl md:text-5xl font-black mb-6" style={{ color: "#1B4332" }}>
+            <h2 className="text-4xl md:text-5xl font-black mb-6" style={{ color: "#1F0A14" }}>
               {content.about_title}
             </h2>
-            <div className="w-16 h-1 rounded-full mb-8" style={{ background: "#D4AF37" }} />
-            <p className="text-lg leading-relaxed mb-8 prose-he" style={{ color: "#4B5563" }}>
+            <div
+              className="w-16 h-1.5 rounded-full mb-8"
+              style={{ background: "linear-gradient(90deg, #BE185D, #7E22CE)" }}
+            />
+            <p className="text-lg leading-relaxed mb-10 prose-he" style={{ color: "#6B4060" }}>
               {content.about_text}
             </p>
 
-            <div className="grid grid-cols-3 gap-6">
-              {[
-                { num: "5,000+", label: "זרים נשלחו" },
-                { num: "98%", label: "לקוחות מרוצים" },
-                { num: "משלוח", label: "עד 3 שעות" },
-              ].map(({ num, label }) => (
-                <div key={label} className="text-center">
-                  <p className="text-2xl font-black" style={{ color: "#1B4332" }}>{num}</p>
-                  <p className="text-xs font-medium mt-1" style={{ color: "#6B7280" }}>{label}</p>
+            <div className="grid grid-cols-3 gap-4">
+              {stats.map(({ num, label, gradient }) => (
+                <div
+                  key={label}
+                  className="text-center p-4 rounded-2xl"
+                  style={{ background: "white", boxShadow: "0 4px 20px rgba(190,24,93,0.08)" }}
+                >
+                  <p
+                    className="text-xl font-black mb-1"
+                    style={{ background: gradient, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
+                  >
+                    {num}
+                  </p>
+                  <p className="text-xs font-medium" style={{ color: "#9D4E6E" }}>{label}</p>
                 </div>
               ))}
             </div>

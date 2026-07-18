@@ -49,14 +49,14 @@ function QuantitySelector({
   return (
     <div
       className="flex items-center gap-2 rounded-xl overflow-hidden"
-      style={{ background: "rgba(27,67,50,0.06)", border: "1.5px solid rgba(27,67,50,0.15)" }}
+      style={{ background: "rgba(190,24,93,0.06)", border: "1.5px solid rgba(190,24,93,0.2)" }}
     >
       <button
         type="button"
         onClick={() => onChange(Math.max(0, value - 1))}
         aria-label="הפחת כמות"
         className="w-9 h-9 flex items-center justify-center transition-all active:scale-90"
-        style={{ color: value === 0 ? "#CBD5E1" : "#1B4332" }}
+        style={{ color: value === 0 ? "#CBD5E1" : "#BE185D" }}
         disabled={value === 0}
       >
         <Minus size={15} />
@@ -71,7 +71,7 @@ function QuantitySelector({
           onChange(isNaN(n) ? 0 : Math.max(0, Math.min(99, n)));
         }}
         className="w-10 text-center text-base font-black bg-transparent border-none outline-none"
-        style={{ color: "#1B4332" }}
+        style={{ color: "#BE185D" }}
         aria-label="כמות"
       />
       <button
@@ -79,7 +79,7 @@ function QuantitySelector({
         onClick={() => onChange(value + 1)}
         aria-label="הוסף כמות"
         className="w-9 h-9 flex items-center justify-center transition-all active:scale-90"
-        style={{ color: "#1B4332" }}
+        style={{ color: "#BE185D" }}
       >
         <Plus size={15} />
       </button>
@@ -110,9 +110,9 @@ function FlowerCard({
       style={{
         background: "white",
         boxShadow: selected
-          ? "0 0 0 2.5px #1B4332, 0 8px 32px rgba(27,67,50,0.16)"
-          : "0 4px 20px rgba(27,67,50,0.08)",
-        border: "1px solid rgba(27,67,50,0.06)",
+          ? "0 0 0 2.5px #BE185D, 0 8px 32px rgba(190,24,93,0.22)"
+          : "0 4px 20px rgba(190,24,93,0.07)",
+        border: `1px solid ${selected ? "rgba(190,24,93,0.3)" : "rgba(190,24,93,0.06)"}`,
       }}
     >
       {/* Photo — clickable for zoom */}
@@ -132,11 +132,11 @@ function FlowerCard({
         {/* Zoom hint overlay */}
         <div
           className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          style={{ background: "rgba(27,67,50,0.35)" }}
+          style={{ background: "rgba(190,24,93,0.4)" }}
         >
           <span
             className="text-xs font-bold px-3 py-1.5 rounded-full"
-            style={{ background: "rgba(255,248,240,0.95)", color: "#1B4332" }}
+            style={{ background: "rgba(255,255,255,0.95)", color: "#BE185D" }}
           >
             לחץ להגדלה
           </span>
@@ -145,7 +145,7 @@ function FlowerCard({
         {selected && (
           <div
             className="absolute top-2.5 right-2.5 w-7 h-7 rounded-full flex items-center justify-center shadow-md"
-            style={{ background: "#1B4332" }}
+            style={{ background: "linear-gradient(135deg, #BE185D, #7E22CE)" }}
           >
             <Check size={14} color="white" strokeWidth={3} />
           </div>
@@ -155,10 +155,10 @@ function FlowerCard({
       {/* Info */}
       <div className="p-4 flex flex-col gap-3 flex-1">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="font-bold text-sm leading-snug flex-1" style={{ color: "#1B4332" }}>
+          <h3 className="font-bold text-sm leading-snug flex-1" style={{ color: "#1F0A14" }}>
             {bouquet.name}
           </h3>
-          <span className="font-black text-base whitespace-nowrap" style={{ color: "#D4AF37" }}>
+          <span className="font-black text-base whitespace-nowrap" style={{ color: "#BE185D" }}>
             ₪{bouquet.price}
           </span>
         </div>
@@ -173,7 +173,7 @@ function FlowerCard({
         </div>
 
         {selected && (
-          <p className="text-xs font-semibold text-center" style={{ color: "#1B4332" }}>
+          <p className="text-xs font-black text-center px-2 py-1 rounded-lg" style={{ background: "rgba(190,24,93,0.08)", color: "#BE185D" }}>
             סה"כ: ₪{(bouquet.price * quantity).toLocaleString("he-IL")}
           </p>
         )}
@@ -254,7 +254,7 @@ export default function OrderForm({
     <section
       id="order"
       className="py-24 px-6"
-      style={{ background: "linear-gradient(180deg, #FFF8F0 0%, #F5EDE0 100%)" }}
+      style={{ background: "linear-gradient(180deg, #FFF1F8 0%, #FCE7F3 100%)" }}
     >
       <div className="max-w-5xl mx-auto">
         {/* Header */}
@@ -265,13 +265,13 @@ export default function OrderForm({
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <span className="text-sm font-semibold tracking-widest uppercase mb-4 block" style={{ color: "#D4AF37" }}>
-            הזמנה קלה ומהירה
+          <span className="text-sm font-bold tracking-widest uppercase mb-4 block" style={{ color: "#BE185D" }}>
+            🛍️ הזמנה קלה ומהירה
           </span>
-          <h2 className="text-4xl md:text-5xl font-black mb-4" style={{ color: "#1B4332" }}>
+          <h2 className="text-4xl md:text-5xl font-black mb-4" style={{ color: "#1F0A14" }}>
             {content.order_title}
           </h2>
-          <div className="w-20 h-1 mx-auto rounded-full" style={{ background: "#D4AF37" }} />
+          <div className="w-20 h-1.5 mx-auto rounded-full" style={{ background: "linear-gradient(90deg, #BE185D, #7E22CE)" }} />
         </motion.div>
 
         {/* Step indicator */}
@@ -283,12 +283,15 @@ export default function OrderForm({
               <div key={i} className="flex items-center gap-3">
                 <div
                   className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all"
-                  style={{ background: active || done ? "#1B4332" : "#E5E7EB", color: active || done ? "#FFF8F0" : "#6B7280" }}
+                  style={{
+                    background: active || done ? "linear-gradient(135deg,#BE185D,#7E22CE)" : "#F3E8FF",
+                    color: active || done ? "white" : "#9D4E6E",
+                  }}
                 >
                   {done ? <Check size={14} /> : i + 1}
                 </div>
-                <span className="text-sm font-medium" style={{ color: "#1B4332" }}>{label}</span>
-                {i < 1 && <div className="w-12 h-0.5" style={{ background: "#D4AF37" }} />}
+                <span className="text-sm font-semibold" style={{ color: "#1F0A14" }}>{label}</span>
+                {i < 1 && <div className="w-12 h-0.5 rounded-full" style={{ background: "linear-gradient(90deg,#BE185D,#7E22CE)" }} />}
               </div>
             );
           })}
@@ -328,9 +331,9 @@ export default function OrderForm({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 16 }}
                     className="rounded-2xl p-5 mb-6"
-                    style={{ background: "rgba(27,67,50,0.06)", border: "1.5px solid rgba(27,67,50,0.15)" }}
+                    style={{ background: "rgba(190,24,93,0.05)", border: "1.5px solid rgba(190,24,93,0.18)" }}
                   >
-                    <p className="font-bold mb-3" style={{ color: "#1B4332" }}>
+                    <p className="font-bold mb-3" style={{ color: "#1F0A14" }}>
                       הבחירה שלכם ({totalCount} פרחים):
                     </p>
                     <div className="flex flex-wrap gap-2 mb-4">
@@ -338,19 +341,19 @@ export default function OrderForm({
                         <span
                           key={b.id}
                           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold"
-                          style={{ background: "#1B4332", color: "#FFF8F0" }}
+                          style={{ background: "linear-gradient(135deg,#BE185D,#7E22CE)", color: "white" }}
                         >
                           {b.name}
                           <span
                             className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-black"
-                            style={{ background: "#D4AF37", color: "#1B4332" }}
+                            style={{ background: "#FBBF24", color: "#1F0A14" }}
                           >
                             {quantities[b.id]}
                           </span>
                         </span>
                       ))}
                     </div>
-                    <p className="font-black text-xl" style={{ color: "#D4AF37" }}>
+                    <p className="font-black text-xl" style={{ color: "#BE185D" }}>
                       סה"כ: ₪{totalAmount.toLocaleString("he-IL")}
                     </p>
                   </motion.div>
@@ -391,23 +394,24 @@ export default function OrderForm({
                           onClick={() => setArrangementType(value)}
                           className="text-right p-4 rounded-2xl transition-all"
                           style={{
-                            background: arrangementType === value ? "rgba(27,67,50,0.07)" : "#F9FAFB",
-                            border: `2px solid ${arrangementType === value ? "#1B4332" : "#E5E7EB"}`,
+                            background: arrangementType === value ? "rgba(190,24,93,0.06)" : "white",
+                            border: `2px solid ${arrangementType === value ? "#BE185D" : "#F3E8FF"}`,
+                            boxShadow: arrangementType === value ? "0 4px 16px rgba(190,24,93,0.15)" : "none",
                           }}
                         >
                           <div className="flex items-start gap-3">
                             <div
                               className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
-                              style={{ background: arrangementType === value ? "#1B4332" : "#E5E7EB" }}
+                              style={{ background: arrangementType === value ? "linear-gradient(135deg,#BE185D,#7E22CE)" : "#F3E8FF" }}
                             >
-                              <Icon size={18} color={arrangementType === value ? "#D4AF37" : "#9CA3AF"} />
+                              <Icon size={18} color={arrangementType === value ? "#FBBF24" : "#9D4E6E"} />
                             </div>
                             <div>
-                              <p className="font-bold text-sm mb-1" style={{ color: "#1B4332" }}>{title}</p>
-                              <p className="text-xs leading-relaxed" style={{ color: "#6B7280" }}>{desc}</p>
+                              <p className="font-bold text-sm mb-1" style={{ color: "#1F0A14" }}>{title}</p>
+                              <p className="text-xs leading-relaxed" style={{ color: "#9D4E6E" }}>{desc}</p>
                             </div>
                             {arrangementType === value && (
-                              <Check size={16} className="flex-shrink-0 mt-1" style={{ color: "#1B4332" }} />
+                              <Check size={16} className="flex-shrink-0 mt-1" style={{ color: "#BE185D" }} />
                             )}
                           </div>
                         </button>
@@ -421,8 +425,8 @@ export default function OrderForm({
                 <button
                   onClick={() => hasSelection && setStep("details")}
                   disabled={!hasSelection}
-                  className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-lg font-bold transition-all disabled:opacity-40 disabled:cursor-not-allowed"
-                  style={{ background: "#1B4332", color: "#FFF8F0" }}
+                  className="btn-glow-pink inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-lg font-black transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none"
+                  style={{ background: "linear-gradient(135deg, #BE185D, #7E22CE)", color: "white" }}
                 >
                   המשך לפרטים
                   <ChevronLeft size={20} />
@@ -547,7 +551,7 @@ export default function OrderForm({
                     type="button"
                     onClick={() => setStep("select")}
                     className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl font-semibold border-2 transition-all"
-                    style={{ borderColor: "#1B4332", color: "#1B4332" }}
+                    style={{ borderColor: "#BE185D", color: "#BE185D", background: "white" }}
                   >
                     <ChevronRight size={18} />
                     שינוי בחירה
@@ -555,8 +559,8 @@ export default function OrderForm({
                   <button
                     type="submit"
                     disabled={loading}
-                    className="px-8 py-4 rounded-2xl text-lg font-bold transition-all disabled:opacity-60"
-                    style={{ background: "#1B4332", color: "#FFF8F0", flex: 2 }}
+                    className="btn-glow-pink px-8 py-4 rounded-2xl text-lg font-black transition-all disabled:opacity-60 disabled:shadow-none"
+                    style={{ background: "linear-gradient(135deg, #BE185D, #7E22CE)", color: "white", flex: 2 }}
                   >
                     {loading ? "שולח..." : `המשך לתשלום — ₪${totalAmount.toLocaleString("he-IL")}`}
                   </button>
@@ -579,12 +583,12 @@ export default function OrderForm({
 }
 
 const inputClass =
-  "w-full px-4 py-3 rounded-xl border-2 bg-white text-base font-medium transition-all focus:outline-none focus:border-green-800";
+  "w-full px-4 py-3 rounded-xl border-2 bg-white text-base font-medium transition-all focus:outline-none focus:border-pink-600";
 
 function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="block text-sm font-semibold mb-2" style={{ color: "#1B4332" }}>{label}</label>
+      <label className="block text-sm font-semibold mb-2" style={{ color: "#1F0A14" }}>{label}</label>
       {children}
       {error && <p className="mt-1 text-sm font-medium" style={{ color: "#DC2626" }}>{error}</p>}
     </div>
