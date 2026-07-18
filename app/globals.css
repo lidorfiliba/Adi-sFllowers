@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1B4332;
+  --color-primary-light: #2D6A4F;
+  --color-primary-subtle: #52B788;
+  --color-gold: #D4AF37;
+  --color-gold-light: #F0D060;
+  --color-blush: #F4A5A5;
+  --color-coral: #E07A5F;
+  --color-cream: #FFF8F0;
+  --color-cream-dark: #F5EDE0;
+  --color-text: #1A1A1A;
+  --color-text-muted: #6B7280;
+  --font-heebo: var(--font-heebo), 'Arial Hebrew', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  direction: rtl;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-text);
+  font-family: var(--font-heebo), 'Arial Hebrew', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-light);
+  border-radius: 4px;
+}
+
+/* RTL helpers */
+.rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Prose Hebrew */
+.prose-he {
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+/* Section transitions */
+section {
+  overflow: hidden;
+}
